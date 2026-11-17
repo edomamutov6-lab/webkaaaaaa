@@ -1,43 +1,57 @@
 :root {
   color-scheme: light dark;
-  --page: #f2f6fb;
-  --surface: #ffffff;
-  --ink: #1f2a44;
-  --muted: #5e6b82;
-  --accent: #3459d1;
-  --accent-dark: #2542a6;
-  --line: #dce4f0;
-  --soft: #eaf0ff;
+  --page: #eff3fa;
+  --panel: #ffffff;
+  --display: #172033;
+  --ink: #202b40;
+  --muted: #66748a;
+  --line: #dfe6f0;
+  --key: #f6f8fc;
+  --key-hover: #e9eef8;
+  --accent: #526be5;
+  --accent-hover: #4058cd;
+  --accent-soft: #e9edff;
   font-family: Inter, "Segoe UI", Arial, sans-serif;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--page); color: var(--ink); line-height: 1.6; }
-.site-header { padding: 3.5rem max(1.25rem, calc((100% - 920px) / 2)); color: #fff; background: linear-gradient(135deg, #1d2b64, #3459d1 65%, #617fe0); }
-.eyebrow { margin: 0 0 .7rem; text-transform: uppercase; letter-spacing: .13em; font-size: .78rem; font-weight: 700; opacity: .85; }
-h1 { max-width: 700px; margin: 0; font-size: clamp(2.4rem, 7vw, 4.3rem); line-height: 1.05; }
-.intro { max-width: 650px; font-size: 1.12rem; color: #e4eaff; }
-.student { margin: 1.5rem 0 0; }
-main { width: min(920px, calc(100% - 2rem)); margin: 2rem auto; }
-.card { margin: 1rem 0; padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: 0 8px 24px #26395e0b; }
-h2 { margin: 0 0 .5rem; font-size: 1.35rem; }
-.card p { color: var(--muted); }
-.controls { display: flex; flex-wrap: wrap; align-items: end; gap: .8rem; margin: 1rem 0; }
-label { display: grid; gap: .35rem; font-size: .9rem; font-weight: 650; }
-input { min-width: 150px; padding: .7rem .8rem; border: 1px solid #aebbd0; border-radius: 9px; color: var(--ink); background: var(--surface); font: inherit; }
-input:focus-visible, button:focus-visible { outline: 3px solid #f3b33d; outline-offset: 3px; }
-button { padding: .72rem 1rem; border: 0; border-radius: 9px; color: white; background: var(--accent); font: inherit; font-weight: 700; cursor: pointer; }
-button:hover { background: var(--accent-dark); }
-button.secondary { color: var(--accent); background: var(--soft); }
-button.secondary:hover { background: #d8e2ff; }
-.result { display: block; min-height: 3rem; padding: .8rem 1rem; border-left: 4px solid var(--accent); border-radius: 5px 10px 10px 5px; background: var(--soft); font-weight: 650; }
-.notes li { margin: .35rem 0; }
-footer { padding: 1.5rem; text-align: center; color: var(--muted); }
+body { min-width: 300px; margin: 0; background: radial-gradient(circle at top, #e4ebff 0, var(--page) 420px); color: var(--ink); line-height: 1.55; }
+.page-shell { width: min(680px, calc(100% - 2rem)); margin: 0 auto; padding: 3rem 0 1.5rem; }
+.page-header { margin-bottom: 1.75rem; text-align: center; }
+.eyebrow { margin: 0 0 .6rem; color: var(--accent); font-size: .76rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(2.2rem, 8vw, 3.5rem); letter-spacing: -.045em; line-height: 1.08; }
+.page-header > p:not(.eyebrow):not(.student) { max-width: 500px; margin: .8rem auto; color: var(--muted); }
+.student { margin: .8rem 0 0; color: var(--muted); font-size: .92rem; }
+.student strong { color: var(--ink); }
+.calculator { max-width: 390px; margin: 0 auto; padding: 1rem; border: 1px solid var(--line); border-radius: 24px; background: var(--panel); box-shadow: 0 20px 50px #1c2c4a18; }
+.display-panel { display: flex; min-height: 118px; flex-direction: column; justify-content: end; align-items: end; overflow: hidden; margin-bottom: .75rem; padding: .5rem .65rem 1rem; border-radius: 16px; background: var(--display); color: #fff; }
+.status { min-height: 1.4em; width: 100%; margin: 0 0 .4rem; color: #b8c2db; font-size: .82rem; text-align: right; }
+.display { display: block; max-width: 100%; overflow-x: auto; font-size: clamp(2.1rem, 10vw, 3rem); font-variant-numeric: tabular-nums; font-weight: 650; letter-spacing: -.035em; white-space: nowrap; }
+.keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: .55rem; }
+.key { min-height: 62px; border: 1px solid var(--line); border-radius: 15px; background: var(--key); color: var(--ink); font: inherit; font-size: 1.25rem; font-weight: 650; cursor: pointer; transition: transform .08s ease, background .15s ease, border-color .15s ease; }
+.key:hover { background: var(--key-hover); }
+.key:active { transform: scale(.96); }
+.key:focus-visible { outline: 3px solid #e8a837; outline-offset: 2px; }
+.key.utility { color: var(--muted); font-size: .95rem; }
+.key.operator { background: var(--accent-soft); border-color: transparent; color: var(--accent); font-size: 1.45rem; }
+.key.operator:hover { background: #dce3ff; }
+.key.operator.selected { background: var(--accent); color: #fff; }
+.key.equals { grid-row: span 2; background: var(--accent); border-color: var(--accent); color: #fff; font-size: 1.65rem; }
+.key.equals:hover { background: var(--accent-hover); }
+.key.zero { grid-column: span 2; }
+.info-card { margin: 1.25rem auto 0; padding: 1.15rem 1.3rem; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); }
+.info-card h2 { margin: 0 0 .4rem; font-size: 1.05rem; }
+.info-card p { margin: .45rem 0; color: var(--muted); font-size: .92rem; }
+kbd { padding: .08rem .32rem; border: 1px solid var(--line); border-radius: 5px; background: var(--key); color: var(--ink); font: inherit; font-size: .82em; }
+footer { margin-top: 1.5rem; color: var(--muted); font-size: .82rem; text-align: center; }
 @media (prefers-color-scheme: dark) {
-  :root { --page: #101522; --surface: #1a2232; --ink: #eef2fb; --muted: #b1bdd1; --line: #344055; --soft: #273556; }
+  :root { --page: #101521; --panel: #1a2232; --display: #0d1320; --ink: #eff3fc; --muted: #aebbd0; --line: #344056; --key: #242e41; --key-hover: #303d55; --accent-soft: #29385f; --accent: #91a2ff; --accent-hover: #7c8ef0; }
+  body { background: radial-gradient(circle at top, #202b49 0, var(--page) 440px); }
+  .key.operator:hover { background: #354875; }
+  .key.operator.selected, .key.equals { color: #101521; }
 }
-@media (max-width: 600px) {
-  .site-header { padding-top: 2.5rem; padding-bottom: 2.5rem; }
-  .controls { align-items: stretch; }
-  .controls label, .controls button { width: 100%; }
-  input { width: 100%; }
+@media (max-width: 420px) {
+  .page-shell { padding-top: 2rem; }
+  .calculator { padding: .7rem; border-radius: 20px; }
+  .keypad { gap: .42rem; }
+  .key { min-height: 56px; border-radius: 12px; }
 }

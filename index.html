@@ -3,74 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="JavaScript functions practice by Eldiyar Mamutov">
-  <title>JavaScript Functions — Practice</title>
+  <meta name="description" content="A modular JavaScript mini calculator by Eldiyar Mamutov">
+  <title>Mini Calculator | Eldiyar Mamutov</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <script type="module" src="src/main.js"></script>
 </head>
 <body>
-  <header class="site-header">
-    <p class="eyebrow">Web Programming 1 · Week 6–7</p>
-    <h1>JavaScript Functions</h1>
-    <p class="intro">A small interactive study of reusable functions, callbacks, and closures.</p>
-    <p class="student">Student: <strong>Eldiyar Mamutov</strong></p>
-  </header>
-  <main>
-    <section class="card" aria-labelledby="calculator-title">
-      <h2 id="calculator-title">1. Function expressions and return</h2>
-      <p>Enter two numbers. The calculator calls separate functions and returns each result.</p>
-      <div class="controls">
-        <label>First number <input id="first-number" type="number" value="12"></label>
-        <label>Second number <input id="second-number" type="number" value="4"></label>
-        <button id="calculate-button" type="button">Calculate</button>
+  <main class="page-shell">
+    <header class="page-header">
+      <p class="eyebrow">Web Programming 1 · Week 6–7</p>
+      <h1>Mini Calculator</h1>
+      <p>A simple calculator built with JavaScript functions, objects, and ES modules.</p>
+      <p class="student">Created by <strong>Eldiyar Mamutov</strong></p>
+    </header>
+
+    <section class="calculator" aria-label="Calculator">
+      <div class="display-panel">
+        <p id="status" class="status" aria-live="polite">Ready</p>
+        <output id="display" class="display" aria-live="polite">0</output>
       </div>
-      <output id="calculator-result" class="result" aria-live="polite">Results will appear here.</output>
-    </section>
-    <section class="card" aria-labelledby="greeting-title">
-      <h2 id="greeting-title">2. Parameters, defaults, and arrow functions</h2>
-      <p>A greeting function uses a default name when the input is empty.</p>
-      <div class="controls">
-        <label>Your name <input id="name-input" type="text" placeholder="Leave blank for Guest"></label>
-        <button id="greet-button" type="button">Say hello</button>
+      <div class="keypad" aria-label="Calculator buttons">
+        <button class="key utility" data-action="clear" type="button">AC</button>
+        <button class="key utility" data-action="delete" type="button" aria-label="Delete last digit">DEL</button>
+        <button class="key operator" data-operator="÷" type="button" aria-label="Divide">÷</button>
+        <button class="key operator" data-operator="×" type="button" aria-label="Multiply">×</button>
+        <button class="key" data-digit="7" type="button">7</button>
+        <button class="key" data-digit="8" type="button">8</button>
+        <button class="key" data-digit="9" type="button">9</button>
+        <button class="key operator" data-operator="−" type="button" aria-label="Subtract">−</button>
+        <button class="key" data-digit="4" type="button">4</button>
+        <button class="key" data-digit="5" type="button">5</button>
+        <button class="key" data-digit="6" type="button">6</button>
+        <button class="key operator" data-operator="+" type="button" aria-label="Add">+</button>
+        <button class="key" data-digit="1" type="button">1</button>
+        <button class="key" data-digit="2" type="button">2</button>
+        <button class="key" data-digit="3" type="button">3</button>
+        <button class="key equals" data-action="equals" type="button" aria-label="Calculate">=</button>
+        <button class="key zero" data-digit="0" type="button">0</button>
+        <button class="key" data-action="decimal" type="button" aria-label="Decimal point">.</button>
       </div>
-      <output id="greeting-result" class="result" aria-live="polite">Hello message will appear here.</output>
     </section>
-    <section class="card" aria-labelledby="array-title">
-      <h2 id="array-title">3. Callback functions: map and filter</h2>
-      <p>A callback is passed to another function. Here an arrow function filters even values and doubles them.</p>
-      <button id="array-button" type="button">Process [1, 2, 3, 4, 5, 6]</button>
-      <output id="array-result" class="result" aria-live="polite">Processed values will appear here.</output>
+
+    <section class="info-card" aria-labelledby="about-title">
+      <h2 id="about-title">About this project</h2>
+      <p>The calculator supports addition, subtraction, multiplication, and division. Use the buttons or your keyboard: number keys, <kbd>+</kbd>, <kbd>-</kbd>, <kbd>*</kbd>, <kbd>/</kbd>, <kbd>Enter</kbd>, and <kbd>Escape</kbd>.</p>
+      <p>The operations are stored in an object, reusable functions handle input and calculations, and ES modules keep the code organized.</p>
     </section>
-    <section class="card" aria-labelledby="closure-title">
-      <h2 id="closure-title">4. Closures and private state</h2>
-      <p>The counter function remembers its own value between clicks. Each counter has independent state.</p>
-      <div class="controls">
-        <button id="counter-one-button" type="button">Counter A +1</button>
-        <button id="counter-two-button" type="button">Counter B +1</button>
-        <button id="counter-reset-button" class="secondary" type="button">Reset counters</button>
-      </div>
-      <output id="counter-result" class="result" aria-live="polite">A: 0 · B: 0</output>
-    </section>
-    <section class="card" aria-labelledby="rest-title">
-      <h2 id="rest-title">5. Rest parameters and pure functions</h2>
-      <p>The sum function accepts any number of values and returns a total without changing outside state.</p>
-      <div class="controls">
-        <label>Numbers (comma separated) <input id="numbers-input" type="text" value="3, 5, 8, 13"></label>
-        <button id="sum-button" type="button">Find the sum</button>
-      </div>
-      <output id="sum-result" class="result" aria-live="polite">Sum will appear here.</output>
-    </section>
-    <section class="card notes" aria-labelledby="concepts-title">
-      <h2 id="concepts-title">What this demonstrates</h2>
-      <ul>
-        <li>Function declarations, expressions, and arrow functions</li>
-        <li>Parameters, default values, rest parameters, and return values</li>
-        <li>Callbacks passed to map and filter</li>
-        <li>Closures that keep variables private</li>
-        <li>Pure functions that depend only on their inputs</li>
-      </ul>
-    </section>
+    <footer><p>Mini Calculator · JavaScript Functions Practice</p></footer>
   </main>
-  <footer><p>JavaScript Functions Practice · Eldiyar Mamutov</p></footer>
 </body>
 </html>

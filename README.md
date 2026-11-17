@@ -1,18 +1,19 @@
-# JavaScript Functions Practice
+# Mini Calculator
 
 **Student:** Eldiyar Mamutov  
 **Course:** Web Programming 1  
-**Topic:** Functions, Objects & ES6
+**Week:** 6–7 — Functions, Objects & ES6
 
-A small interactive website demonstrating function declarations and expressions, arrow functions, parameters, return values, rest parameters, callbacks, pure functions, and closures.
+This project is a browser based mini calculator for addition, subtraction, multiplication, and division. It demonstrates reusable functions, an object that stores operations, arrow functions, template literals, and JavaScript ES modules.
 
-## Files
-- `index.html` — interactive examples and explanations
-- `styles.css` — responsive styling with dark mode preference
-- `script.js` — JavaScript examples and event handlers
+## Project files
+- `index.html` — calculator interface
+- `styles.css` — responsive styling and dark color scheme
+- `src/main.js` — calculator state, button and keyboard events, and UI updates
+- `src/calculator.js` — pure calculation and number-formatting functions, plus the operations object
 
-## How to run
-Open `index.html` in a modern web browser. No packages or build tools are required.
+## Run locally
+Because the project uses JavaScript ES modules, open it through a local web server (for example, Live Server in VS Code) or publish it with GitHub Pages. Opening the HTML file directly with `file://` may prevent the browser from loading modules.
 
-## Submission
-Upload these files to a GitHub repository and submit the repository URL in Moodle under **PS: JS Functions**.
+## GitHub submission
+Upload the project files to a GitHub repository, enable GitHub Pages if a live preview is needed, and submit the repository URL in Moodle under **PS: JS Functions**.
