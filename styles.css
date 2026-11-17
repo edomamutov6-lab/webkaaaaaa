@@ -1,0 +1,43 @@
+:root {
+  color-scheme: light dark;
+  --page: #f2f6fb;
+  --surface: #ffffff;
+  --ink: #1f2a44;
+  --muted: #5e6b82;
+  --accent: #3459d1;
+  --accent-dark: #2542a6;
+  --line: #dce4f0;
+  --soft: #eaf0ff;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); line-height: 1.6; }
+.site-header { padding: 3.5rem max(1.25rem, calc((100% - 920px) / 2)); color: #fff; background: linear-gradient(135deg, #1d2b64, #3459d1 65%, #617fe0); }
+.eyebrow { margin: 0 0 .7rem; text-transform: uppercase; letter-spacing: .13em; font-size: .78rem; font-weight: 700; opacity: .85; }
+h1 { max-width: 700px; margin: 0; font-size: clamp(2.4rem, 7vw, 4.3rem); line-height: 1.05; }
+.intro { max-width: 650px; font-size: 1.12rem; color: #e4eaff; }
+.student { margin: 1.5rem 0 0; }
+main { width: min(920px, calc(100% - 2rem)); margin: 2rem auto; }
+.card { margin: 1rem 0; padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: 0 8px 24px #26395e0b; }
+h2 { margin: 0 0 .5rem; font-size: 1.35rem; }
+.card p { color: var(--muted); }
+.controls { display: flex; flex-wrap: wrap; align-items: end; gap: .8rem; margin: 1rem 0; }
+label { display: grid; gap: .35rem; font-size: .9rem; font-weight: 650; }
+input { min-width: 150px; padding: .7rem .8rem; border: 1px solid #aebbd0; border-radius: 9px; color: var(--ink); background: var(--surface); font: inherit; }
+input:focus-visible, button:focus-visible { outline: 3px solid #f3b33d; outline-offset: 3px; }
+button { padding: .72rem 1rem; border: 0; border-radius: 9px; color: white; background: var(--accent); font: inherit; font-weight: 700; cursor: pointer; }
+button:hover { background: var(--accent-dark); }
+button.secondary { color: var(--accent); background: var(--soft); }
+button.secondary:hover { background: #d8e2ff; }
+.result { display: block; min-height: 3rem; padding: .8rem 1rem; border-left: 4px solid var(--accent); border-radius: 5px 10px 10px 5px; background: var(--soft); font-weight: 650; }
+.notes li { margin: .35rem 0; }
+footer { padding: 1.5rem; text-align: center; color: var(--muted); }
+@media (prefers-color-scheme: dark) {
+  :root { --page: #101522; --surface: #1a2232; --ink: #eef2fb; --muted: #b1bdd1; --line: #344055; --soft: #273556; }
+}
+@media (max-width: 600px) {
+  .site-header { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .controls { align-items: stretch; }
+  .controls label, .controls button { width: 100%; }
+  input { width: 100%; }
+}
